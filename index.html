@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TradeMind AI — Join the Waitlist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #7C6FE0;
+    --purple-dark: #5A4FC8;
+    --blue: #5B8AF5;
+    --bg: #0A0812;
+    --card: #120F1E;
+    --border: rgba(124,111,224,0.25);
+    --text: #F0EEF8;
+    --muted: rgba(240,238,248,0.5);
+    --glow: rgba(124,111,224,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background */
+  .bg-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bg-orb-1 {
+    width: 600px; height: 600px;
+    background: rgba(124,111,224,0.12);
+    top: -200px; left: -200px;
+  }
+  .bg-orb-2 {
+    width: 500px; height: 500px;
+    background: rgba(91,138,245,0.08);
+    bottom: -150px; right: -150px;
+  }
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,111,224,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,111,224,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Layout */
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-icon svg { width: 18px; height: 18px; }
+  .logo-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .logo-name span { color: var(--purple); }
+
+  /* Badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(124,111,224,0.12);
+    border: 1px solid var(--border);
+    color: #B8AFFF;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #a8f0c6;
+    animation: pulse 2s infinite;
+  }
+
+  /* Headline */
+  .headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.05;
+    margin-bottom: 1.25rem;
+    animation: fadeUp 0.6s 0.15s ease both;
+  }
+  .headline .gradient-text {
+    background: linear-gradient(135deg, #B8AFFF 0%, #5B8AF5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    text-align: center;
+    max-width: 460px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  /* Features row */
+  .features {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.25s ease both;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .feature-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--purple);
+    flex-shrink: 0;
+  }
+
+  /* Form card */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.25rem;
+    width: 100%;
+    max-width: 460px;
+    animation: fadeUp 0.6s 0.3s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124,111,224,0.5), transparent);
+  }
+
+  .field { margin-bottom: 1.1rem; }
+  .field-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(240,238,248,0.4);
+    margin-bottom: 7px;
+  }
+  .field input, .field select {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(124,111,224,0.2);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-size: 15px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+  }
+  .field input::placeholder { color: rgba(240,238,248,0.2); }
+  .field input:focus, .field select:focus {
+    border-color: var(--purple);
+    background: rgba(124,111,224,0.07);
+  }
+  .field select option { background: #1A1530; color: var(--text); }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .error { font-size: 12px; color: #ff6b6b; margin-top: 5px; display: none; }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 13px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--blue) 100%);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: opacity 0.2s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+  .submit-btn:active { transform: translateY(0); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* Counter */
+  .counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.75rem;
+    color: rgba(240,238,248,0.4);
+    font-size: 13px;
+    animation: fadeUp 0.6s 0.35s ease both;
+  }
+
+  /* Success */
+  .success-state { text-align: center; padding: 0.5rem 0; }
+  .success-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+  .success-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .success-sub { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* Footer */
+  .footer {
+    margin-top: 3rem;
+    font-size: 12px;
+    color: rgba(240,238,248,0.2);
+    text-align: center;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%,100%{opacity:1} 50%{opacity:0.3}
+  }
+
+  @media (max-width: 480px) {
+    .field-row { grid-template-columns: 1fr; }
+    .features { gap: 1rem; }
+    .card { padding: 1.75rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-grid"></div>
+
+<div class="wrapper">
+
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 13L6 8L9 11L13 5L16 8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="8" r="1.5" fill="white"/>
+      </svg>
+    </div>
+    <div class="logo-name">Trade<span>Mind</span> AI</div>
+  </div>
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Early Access — Limited Spots
+  </div>
+
+  <h1 class="headline">
+    Trade smarter.<br>
+    <span class="gradient-text">Think clearer.</span>
+  </h1>
+
+  <p class="sub">
+    Your AI trading coach, behavioral analytics, and journal — all in one place. Join the waitlist and be first to get beta access.
+  </p>
+
+  <div class="features">
+    <div class="feature"><span class="feature-dot"></span>AI Trading Coach</div>
+    <div class="feature"><span class="feature-dot"></span>Trader DNA Analysis</div>
+    <div class="feature"><span class="feature-dot"></span>Performance Journal</div>
+    <div class="feature"><span class="feature-dot"></span>Market Intelligence</div>
+  </div>
+
+  <div class="card" id="formCard">
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label">First Name</label>
+        <input id="nameInput" type="text" placeholder="Rem" />
+      </div>
+      <div class="field">
+        <label class="field-label">Email</label>
+        <input id="emailInput" type="email" placeholder="you@email.com" />
+        <div class="error" id="emailError">Enter a valid email</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">I am a...</label>
+      <select id="typeSelect">
+        <option value="">Select your trader type</option>
+        <option value="Beginner">Beginner — just getting started</option>
+        <option value="Intermediate">Intermediate — 1–2 years experience</option>
+        <option value="Advanced">Advanced — 3+ years experience</option>
+        <option value="Professional">Professional / Institutional</option>
+      </select>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+      Request Beta Access →
+    </button>
+  </div>
+
+  <div class="counter">
+    <span class="badge-dot"></span>
+    <span id="counterText">Loading signups...</span>
+  </div>
+
+  <div class="footer">© 2025 TradeMind AI · Confidential · rem.vafin.08@gmail.com</div>
+
+</div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxV0GBJn7spVu3aCMYxGIENDGPjHz1UCMXJO0WhorGvYtsQHcA2Wu_XVH0cJexVZ6JvWQ/exec';
+const COUNT_KEY = 'tm_count';
+
+function getCount() {
+  return parseInt(localStorage.getItem(COUNT_KEY) || '0');
+}
+function setCount(n) {
+  localStorage.setItem(COUNT_KEY, String(n));
+}
+
+function updateCounter() {
+  const c = getCount();
+  document.getElementById('counterText').textContent =
+    c > 0 ? c + ' traders already on the waitlist' : 'Be one of the first to join';
+}
+
+async function handleSubmit() {
+  const name = document.getElementById('nameInput').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  const type = document.getElementById('typeSelect').value;
+  const emailErr = document.getElementById('emailError');
+  const btn = document.getElementById('submitBtn');
+
+  emailErr.style.display = 'none';
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailErr.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Joining...';
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, type, timestamp: new Date().toISOString() })
+    });
+  } catch(e) {}
+
+  setCount(getCount() + 1);
+  updateCounter();
+
+  document.getElementById('formCard').innerHTML = `
+    <div class="success-state">
+      <div class="success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M4 12l6 6L20 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="success-title">You're on the list${name ? ', ' + name.split(' ')[0] : ''}! 🎯</div>
+      <p class="success-sub">We'll reach out when beta access opens.<br>Stay sharp out there.</p>
+    </div>`;
+}
+
+updateCounter();
+</script>
+</body>
+</html>
